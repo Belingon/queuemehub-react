@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Router from '../../router';
 import logo from './logo.svg';
 import './App.css';
 
@@ -19,10 +21,17 @@ class App extends Component {
           >
             Learn React
           </a>
+          <div>
+              {this.props.value}
+          </div>
         </header>
+        <Router/>
       </div>
     );
   }
 }
 
+App.PropTypes = {
+  value: PropTypes.string.isRequired
+}
 export default App;
