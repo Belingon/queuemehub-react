@@ -2,11 +2,11 @@ import { combineReducers } from 'redux'
 import { createResponsiveStateReducer } from 'redux-responsive';
 
 import app from '../containers/app/reducer';
-import things from '../containers/thing/reducer';
+import home from '../containers/home/reducer';
 
 const rootReducer = combineReducers({
     app,
-    things,
+    home,
     browser: createResponsiveStateReducer({
       extraSmall: 480,
       small: 768,

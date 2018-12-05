@@ -4,11 +4,11 @@ const init_state = {
     otherValue: 'red'
 };
 
-const things = (state = init_state, action) => {
+const home = (state = init_state, action) => {
     switch (action.type) {
         default:
         return state;
     }
 }
 
-export default things;
+export default home;
