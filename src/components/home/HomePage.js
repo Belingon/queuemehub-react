@@ -40,22 +40,22 @@ class HomePage extends Component{
     constructor(props){
         super(props);
         this.state = {
-            selectedBuisnessType : [],
-            buisnessName : '',
+            selectedBusinessType : [],
+            businessName : '',
         }
     }
 
     onBuisnessTypeChange = (event) => {
-        this.setState({selectedBuisnessType: event.target.value});
+        this.setState({selectedBusinessType: event.target.value});
         //update the prop value 
     };
 
-    handleBuisnessNameChange = (event) => {
-        this.setState({buisnessName: event.target.value})
+    handleBusinessNameChange = (event) => {
+        this.setState({businessName: event.target.value})
     };
 
-    handleBuisnessZipCodeChange = (event) => {
-        this.setState({buisnessZipCode: event.target.value})
+    handleBusinessZipCodeChange = (event) => {
+        this.setState({businessZipCode: event.target.value})
     }
 
     render() {
@@ -63,16 +63,16 @@ class HomePage extends Component{
             <Card>
               <p className={this.props.classes.welcomeText} >Welcome to QMEHUB</p>
               <CardContent className={this.props.classes.textAlignCenter}>
-                  <p className={this.props.classes.marginTop0}>Find Buisness</p>
+                  <p className={this.props.classes.marginTop0}>Find Business</p>
                   <Grid container spacing={12}>
                     <Grid item xs={3}/>
                     <Grid item xs={2}>
                         <FormControl className={this.props.classes.formControl}>
-                        <InputLabel htmlFor="buisnessType">Buisness Type</InputLabel>
+                        <InputLabel htmlFor="businessType">Business Type</InputLabel>
                         <Select 
-                            id="buissnesType"
+                            id="businessType"
                             onChange={this.onBuisnessTypeChange}  
-                            value={this.state.selectedBuisnessType}
+                            value={this.state.selectedBusinessType}
                         >
                             <MenuItem value={'garage'}>
                                 Garage
@@ -88,16 +88,16 @@ class HomePage extends Component{
                     </Grid>
                     <Grid item xs={2}>
                         <TextField
-                            label="Buisness Name"
-                            value={this.state.buisnessName}
-                            onChange={this.handleBuisnessNameChange}
+                            label="Business Name"
+                            value={this.state.businessName}
+                            onChange={this.handleBusinessNameChange}
                         />
                     </Grid>
                     <Grid item xs={2}>
                         <TextField
-                            label="Buisness Zip Code"
-                            value={this.state.buisnessZipCode}
-                            onChange={this.handleBuisnessZipCodeChange}
+                            label="Business Zip Code"
+                            value={this.state.businessZipCode}
+                            onChange={this.handleBusinessZipCodeChange}
                         />
                     </Grid>
                     <Grid item xs={3}/>
@@ -105,7 +105,7 @@ class HomePage extends Component{
               </CardContent>
               <div className={this.props.classes.actionGroup}>
                   <CardActions>
-                    <Button variant="contained" color="primary">Search</Button>
+                    <Button variant="contained" color="primary" onClick={() => this.props.history.push("/businesses")}>Search</Button>
                   </CardActions>
               </div>
           </Card>
@@ -114,6 +114,7 @@ class HomePage extends Component{
 }
 
 HomePage.propTypes = {
-    otherValue: PropTypes.string.isRequired
+
 }
+
 export default withStyles(styles)(HomePage);
