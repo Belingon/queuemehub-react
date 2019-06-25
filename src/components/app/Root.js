@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ConnectedRouter } from 'react-router-redux';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from '../../containers/app/AppContainer';
 
@@ -8,17 +8,16 @@ class Root extends Component {
   render() {
     return (
       <Provider store={this.props.store}>
-        <ConnectedRouter history={this.props.history}>
+        <BrowserRouter>
           <App />
-        </ConnectedRouter>
+        </BrowserRouter>
       </Provider>
     )
   };
 }
 
 Root.propTypes = {
-  store: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
+  store: PropTypes.object.isRequired
 };
 
 export default Root;

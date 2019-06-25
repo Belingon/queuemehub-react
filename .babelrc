@@ -1,0 +1,64 @@
+{
+  "env": {
+    "development": {
+      "presets": [
+        "@babel/env",
+        "@babel/react"
+      ],
+      "plugins": [
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-do-expressions",
+        "@babel/plugin-proposal-export-default-from",
+        "@babel/plugin-proposal-logical-assignment-operators",
+        "@babel/plugin-transform-react-constant-elements"
+      ]
+    },
+    "production": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "targets": { /* Material-ui minimum requirements. */
+              "ie": 11,
+              "edge": 14,
+              "firefox": 45,
+              "chrome": 49,
+              "safari": 10
+            },
+            "forceAllTransforms": true
+          }
+        ],
+        "@babel/react"
+      ],
+      "plugins": [
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+        "transform-react-remove-prop-types",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-do-expressions",
+        "@babel/plugin-proposal-export-default-from",
+        "@babel/plugin-proposal-logical-assignment-operators",
+        "@babel/plugin-transform-react-constant-elements"
+      ],
+      "ignore": [
+        "*.spec.js",
+        "index.full.js"
+      ],
+    },
+    "test": {
+      "presets": [
+        "@babel/env",
+        "@babel/react"
+      ],
+      "plugins": [
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+        "transform-react-remove-prop-types",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-do-expressions",
+        "@babel/plugin-proposal-export-default-from",
+        "@babel/plugin-proposal-logical-assignment-operators",
+        "@babel/plugin-transform-react-constant-elements"
+      ]
+    }
+  }
+}
