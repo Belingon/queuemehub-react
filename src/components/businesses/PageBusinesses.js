@@ -1,23 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import Grid from "@material-ui/core/Grid";
-
+import compose from 'recompose/compose';
 import bearmeme from './bearmeme.jpg';
 import images from './images.jpg';
 import meme from './meme.jpg';
-
-const styles = theme => ({
-    gridList: {
-        overflowY: 'scroll',
-        maxHeight: 800
-      }
-});
 
 const tileData = [
     {
@@ -183,4 +175,4 @@ PageBusinesses.propTypes = {
 
 }
 
-export default withStyles(styles)(PageBusinesses);
+export default PageBusinesses;

@@ -10,30 +10,6 @@ import Button from '@material-ui/core/Button';
 import Grid from "@material-ui/core/Grid";
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
-import { withStyles } from '@material-ui/core/styles';
-
-const styles = theme => ({
-    formControl: {
-      minWidth: 200
-    },
-    welcomeText: {
-        textAlign: 'center', 
-        paddingTop: 50, 
-        fontSize: 'large'
-    },
-    actionGroup: {
-        display: 'flex', 
-        justifyContent:'center', 
-        paddingTop: 20, 
-        paddingBottom:20
-    },
-    textAlignCenter: {
-        textAlign:'center'
-    },
-    marginTop0: {
-        marginTop: 0
-    }
-  });
 
 class HomePage extends Component{
 
@@ -116,5 +92,4 @@ class HomePage extends Component{
 HomePage.propTypes = {
 
 }
-
-export default withStyles(styles)(HomePage);
+export default HomePage;

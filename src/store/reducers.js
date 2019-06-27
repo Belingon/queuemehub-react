@@ -9,5 +9,5 @@ const rootReducer = combineReducers({
     businesses
   });
   
-  export default rootReducer
+export default rootReducer;
   
