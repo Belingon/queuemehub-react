@@ -79,7 +79,7 @@ const styles = theme => ({
 
 function mapDispatchToProps(state) {
     return {
-      user : state.app.user,
+      user : state.app.user
     };
 }
 

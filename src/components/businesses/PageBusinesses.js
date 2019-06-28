@@ -3,168 +3,55 @@ import PropTypes from 'prop-types';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
+import ListSubHeader from '@material-ui/core/ListSubHeader';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import Grid from "@material-ui/core/Grid";
-import compose from 'recompose/compose';
-import bearmeme from './bearmeme.jpg';
-import images from './images.jpg';
-import meme from './meme.jpg';
+import BusinessFilter from './BusinessFilter';
 
-const tileData = [
-    {
-        img: bearmeme,
-        name: 'West Street Service Center',
-        description: 'full service garage',
-        city: 'gardner'
-    },
-    {
-        img: images,
-        name: 'This is a test',
-        description: 'testing description',
-        city: 'leominster'
-    },
-    {
-        img: meme,
-        name: 'Lord Of The Rings',
-        description: 'Best novels ever',
-        city: 'middle earth'
-    },
-    {
-        img: bearmeme,
-        name: 'West Street Service Center',
-        description: 'full service garage',
-        city: 'gardner'
-    },
-    {
-        img: images,
-        name: 'This is a test',
-        description: 'testing description',
-        city: 'leominster'
-    },
-    {
-        img: meme,
-        name: 'Lord Of The Rings',
-        description: 'Best novels ever',
-        city: 'middle earth'
-    },
-    {
-        img: bearmeme,
-        name: 'West Street Service Center',
-        description: 'full service garage',
-        city: 'gardner'
-    },
-    {
-        img: images,
-        name: 'This is a test',
-        description: 'testing description',
-        city: 'leominster'
-    },
-    {
-        img: meme,
-        name: 'Lord Of The Rings',
-        description: 'Best novels ever',
-        city: 'middle earth'
-    },
-    {
-        img: meme,
-        name: 'Lord Of The Rings',
-        description: 'Best novels ever',
-        city: 'middle earth'
-    },
-    {
-        img: bearmeme,
-        name: 'West Street Service Center',
-        description: 'full service garage',
-        city: 'gardner'
-    },
-    {
-        img: images,
-        name: 'This is a test',
-        description: 'testing description',
-        city: 'leominster'
-    },
-    {
-        img: meme,
-        name: 'Lord Of The Rings',
-        description: 'Best novels ever',
-        city: 'middle earth'
-    },   {
-        img: meme,
-        name: 'Lord Of The Rings',
-        description: 'Best novels ever',
-        city: 'middle earth'
-    },
-    {
-        img: bearmeme,
-        name: 'West Street Service Center',
-        description: 'full service garage',
-        city: 'gardner'
-    },
-    {
-        img: images,
-        name: 'This is a test',
-        description: 'testing description',
-        city: 'leominster'
-    },
-    {
-        img: meme,
-        name: 'Lord Of The Rings',
-        description: 'Best novels ever',
-        city: 'middle earth'
-    },   {
-        img: meme,
-        name: 'Lord Of The Rings',
-        description: 'Best novels ever',
-        city: 'middle earth'
-    },
-    {
-        img: bearmeme,
-        name: 'West Street Service Center',
-        description: 'full service garage',
-        city: 'gardner'
-    },
-    {
-        img: images,
-        name: 'This is a test',
-        description: 'testing description',
-        city: 'leominster'
-    },
-    {
-        img: meme,
-        name: 'Lord Of The Rings',
-        description: 'Best novels ever',
-        city: 'middle earth'
-    }
-]
-    
-class PageBusinesses extends Component{ 
+class PageBusinesses extends Component { 
+
+    componentDidMount() {
+        this.props.fetchBusinesses(this.props.businessFilter);
+    };
+
+    componentDidUpdate(prevProps) {
+        if(this.props.businessFilter !== prevProps.businessFilter) {
+            this.props.fetchBusinesses(this.props.businessFilter)
+        }
+    };
 
     render() {
         return (
-            <Grid container spacing={12} style={{display: 'flex'}}>
-                <Grid item xs={8}>
+            <Grid container style={{display: 'flex', flexGrow: 1}}>
+                <Grid item xs={9}>
                     <h1>Businesses</h1>
-                    <GridList cols={4} cellHeight={250} className={this.props.classes.gridList}>
-                        {tileData.map(tile => (
-                        <GridListTile key={tile.img}>
+                    <GridList cellHeight={250} className={this.props.classes.gridList}>
+                        <GridListTile key="header" cols={4} style={{height: 'auto'}}>
+                            <ListSubHeader component="div">Businesses</ListSubHeader>
+                        </GridListTile>
+                        {this.props.businesses.map(tile => (
+                            <GridListTile key={tile.name}>
                                 <img src={tile.img} alt={tile.name}/>
                                 <GridListTileBar
                                     title={tile.name}
                                     subtitle={<span>{tile.description}</span>}
                                     actionIcon={
                                         <IconButton>
-                                            <InfoIcon />
+                                            <InfoIcon onClick={() => console.log("need to open slider up")}/>
                                         </IconButton>
                                     }
                                 />
-                        </GridListTile> 
+                            </GridListTile> 
                         ))}
                     </GridList>
                 </Grid>
-                <Grid item xs={1}/>
                 <Grid item xs={3}>
-                    <p>Soon To Be Filter For Businesses!</p>
+                    <BusinessFilter 
+                        businessFilter={this.props.businessFilter}
+                        updateBusinessFilter={this.props.updateBusinessFilter}
+                        filterDirection="column"
+                    />
                 </Grid>
             </Grid>
         )
@@ -172,7 +59,8 @@ class PageBusinesses extends Component{
 }
 
 PageBusinesses.propTypes = {
-
+    businesses: PropTypes.array.isRequired,
+    businessFilter: PropTypes.object.isRequired,
+    fetchBusinesses: PropTypes.func.isRequired
 }
-
 export default PageBusinesses;

@@ -8,6 +8,7 @@ import Schedule from '@material-ui/icons/Schedule';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Divider from '@material-ui/core/Divider';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 class App extends Component {
 
@@ -126,6 +127,7 @@ class App extends Component {
   render() {
     return (
       <div className={this.props.classes.page}>
+        <CssBaseline />
         <div>
           <AppBar position='static'>
             <Toolbar className={this.props.classes.toolbar}>

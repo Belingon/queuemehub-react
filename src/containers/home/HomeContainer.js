@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
-import HomePage from '../../components/home/HomePage';
 import { withStyles } from '@material-ui/core/styles';
 import compose from 'recompose/compose';
+import {updateBusinessFilter} from '../businesses/actions';
+import HomePage from '../../components/home/HomePage';
 
 const styles = theme => ({
   formControl: {
@@ -28,8 +29,8 @@ const styles = theme => ({
 
 function mapDispatchToProps(state) {
     return {
-      otherValue: state.home.otherValue,
+      businessFilter: state.businesses.businessFilter
     };
 }
 
-export default compose(withStyles(styles), connect(mapDispatchToProps))(HomePage);
+export default compose(withStyles(styles), connect(mapDispatchToProps, {updateBusinessFilter}))(HomePage);

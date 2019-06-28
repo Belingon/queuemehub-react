@@ -1,7 +1,11 @@
 import { connect } from 'react-redux';
-import PageBusinesses from '../../components/businesses/PageBusinesses';
 import { withStyles } from '@material-ui/core/styles';
 import compose from 'recompose/compose';
+import PageBusinesses from '../../components/businesses/PageBusinesses';
+import { 
+  updateBusinessFilter, 
+  fetchBusinesses
+} from './actions';
 
 const styles = theme => ({
   gridList: {
@@ -12,8 +16,12 @@ const styles = theme => ({
 
 function mapDispatchToProps(state) {
     return {
-      browser: state.browser,
+      businesses: state.businesses.businesses,
+      businessFilter: state.businesses.businessFilter
     };
 }
 
-export default compose(withStyles(styles), connect(mapDispatchToProps))(PageBusinesses);
+export default compose(withStyles(styles), connect(mapDispatchToProps, {
+  updateBusinessFilter,
+  fetchBusinesses
+}))(PageBusinesses);

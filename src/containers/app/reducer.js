@@ -1,5 +1,5 @@
 import * as actions from '../../constants/actions';
-import { grayLight, green, blueMedium, neutralWhite } from '../../components/theme/colors';
+
 const init_state = {
     user: {},
 };
