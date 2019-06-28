@@ -33,12 +33,10 @@ class BusinessFilter extends Component {
 
     render() {
         return (
-            <div>
-                <p className={this.props.classes.marginTop0}>Find Business</p>
-                  <Grid container direction={this.props.filterDirection} style={{flexGrow: 1}}>
-                  <Grid item xs={3}/>
-                    <Grid item xs={2}>
-                        <FormControl className={this.props.classes.formControl}>
+            <div style={{display:'flex', flexDirection: 'column'}}>
+                <h1>Find Business</h1>
+                <div>
+                    <FormControl className={this.props.classes.formControl}>
                         <InputLabel htmlFor="businessType">Business Type</InputLabel>
                         <Select 
                             id="businessType"
@@ -55,24 +53,23 @@ class BusinessFilter extends Component {
                                 Restaurant
                             </MenuItem>
                         </Select>
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={2}>
-                        <TextField
-                            label="Business Name"
-                            value={this.props.businessFilter.name}
-                            onChange={(event) => this.updateFilter('name', event.target.value)}
-                        />
-                    </Grid>
-                    <Grid item xs={2}>
-                        <TextField
-                            label="Business Zip Code"
-                            value={this.props.businessFilter.zipCode}
-                            onChange={(event) => this.updateFilter('zipCode', event.target.value)}
-                        />
-                    </Grid>
-                    <Grid item xs={3}/>
-                  </Grid>
+                    </FormControl>
+                </div>
+                <div>
+                    <TextField
+                        label="Business Name"
+                        value={this.props.businessFilter.name}
+                        onChange={(event) => this.updateFilter('name', event.target.value)}
+                    />
+                </div>
+                <div>
+                    <TextField
+                        label="Business Zip Code"
+                        
+                        value={this.props.businessFilter.zipCode}
+                        onChange={(event) => this.updateFilter('zipCode', event.target.value)}
+                    />
+                </div>
             </div>
         )
     }

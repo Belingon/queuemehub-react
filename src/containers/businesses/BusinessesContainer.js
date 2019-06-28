@@ -6,12 +6,19 @@ import {
   updateBusinessFilter, 
   fetchBusinesses
 } from './actions';
+import { neutralWhite } from '../../components/theme/colors';
 
 const styles = theme => ({
   gridList: {
       overflowY: 'scroll',
       maxHeight: 800
-    }
+  },
+  toolbar: {
+    backgroundColor: neutralWhite,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  }, 
 });
 
 function mapDispatchToProps(state) {
