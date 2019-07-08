@@ -13,6 +13,8 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import Divider from '@material-ui/core/Divider';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
     formControl: {
@@ -25,23 +27,43 @@ const styles = theme => ({
 
 class BusinessFilter extends Component { 
 
+    constructor(props) {
+        super(props);
+        this.state = {
+          businessFilter: this.props.businessFilter 
+        }
+    }
+
     updateFilter = (field, value) => {
-        let newBusinessFilter = Object.assign({}, this.props.businessFilter);
+        let newBusinessFilter = Object.assign({}, this.state.businessFilter);
         newBusinessFilter[field] = value;
-        this.props.updateBusinessFilter(newBusinessFilter);
+        this.setState({businessFilter: newBusinessFilter});
+    };
+
+    onFilterApply = () => {
+        this.props.onFilter(this.state.businessFilter);
+    };
+
+    onClearFilter = () => {
+        this.setState({businessFilter: {
+            type: '',
+            name: '',
+            zipCode: ''
+        }})
     };
 
     render() {
         return (
-            <div style={{display:'flex', flexDirection: 'column'}}>
-                <h1>Find Business</h1>
+            <div style={{display:'flex', flexDirection: 'column', padding: 10}}>
+                <h2>Find Business</h2>
+                <Divider className={this.props.classes.dividerStyle}/>
                 <div>
                     <FormControl className={this.props.classes.formControl}>
                         <InputLabel htmlFor="businessType">Business Type</InputLabel>
-                        <Select 
+                        <Select
                             id="businessType"
                             onChange={(event) => this.updateFilter('type', event.target.value)}  
-                            value={this.props.businessFilter.type}
+                            value={this.state.businessFilter.type}
                         >
                             <MenuItem value={'garage'}>
                                 Garage
@@ -58,17 +80,20 @@ class BusinessFilter extends Component {
                 <div>
                     <TextField
                         label="Business Name"
-                        value={this.props.businessFilter.name}
+                        value={this.state.businessFilter.name}
                         onChange={(event) => this.updateFilter('name', event.target.value)}
                     />
                 </div>
                 <div>
                     <TextField
                         label="Business Zip Code"
-                        
-                        value={this.props.businessFilter.zipCode}
+                        value={this.state.businessFilter.zipCode}
                         onChange={(event) => this.updateFilter('zipCode', event.target.value)}
                     />
+                </div>
+                <div style={{marginBottom: 10, marginTop: 20, display: 'flex', justifyContent: this.props.hasClearButton ? 'space-between': 'center'}}>
+                    <Button onClick={this.onFilterApply} variant="contained" color="primary" style={{width: 100, marginRight: 10}}>Search</Button>
+                    {this.props.hasClearButton ? (<Button onClick={this.onClearFilter} variant="contained" style={{width: 100}}>Clear</Button>) : null}
                 </div>
             </div>
         )
@@ -77,10 +102,13 @@ class BusinessFilter extends Component {
 
 BusinessFilter.propTypes = {
     businessFilter: PropTypes.object.isRequired,
-    updateBusinessFilter: PropTypes.func.isRequired,
-    filterDirection: PropTypes.string.isRequired
+    onFilter: PropTypes.func.isRequired,
+    filterDirection: PropTypes.string.isRequired,
+    resetBusinessFilter: PropTypes.func.isRequired,
+    hasClearButton: PropTypes.bool,
 }
 BusinessFilter.defaultProps = {
-    filterDirection: 'row'
+    filterDirection: 'row',
+    hasClearButton: true
   }
 export default withStyles(styles)(BusinessFilter);

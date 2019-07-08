@@ -34,6 +34,11 @@ class PageBusinesses extends Component {
         }
     };
 
+    onFilter = (businessFilter) => {
+        this.props.updateBusinessFilter(businessFilter);
+        this.onFilterDrawerClose();
+    };
+
     onFilterDrawerClick = () => {
         this.setState({isFilterDrawerOpen: true})
     };
@@ -77,8 +82,7 @@ class PageBusinesses extends Component {
           >
             <BusinessFilter 
                 businessFilter={this.props.businessFilter}
-                updateBusinessFilter={this.props.updateBusinessFilter}
-                filterDirection="column"
+                onFilter={this.onFilter}
             />
           </Drawer>
         )]

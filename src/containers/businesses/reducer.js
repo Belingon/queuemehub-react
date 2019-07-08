@@ -25,6 +25,15 @@ const businesses = (state = init_state, action) => {
                 ...state,
                 businesses : filteredTileData
             }
+        case actions.RESET_BUSINESS_FILTER: 
+            return {
+                ...state,
+                businessFilter : {
+                    type: '',
+                    name: '',
+                    zipCode: ''
+                }
+            }
         default:
         return state;
     }

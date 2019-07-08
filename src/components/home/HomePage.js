@@ -8,6 +8,11 @@ import BusinessFilter from '../businesses/BusinessFilter';
 
 class HomePage extends Component {
 
+  onFilter = (businessFilter) => {
+    this.props.updateBusinessFilter(businessFilter);
+    this.props.history.push("/businesses");
+  }
+
     render() {
         return(
             <Card>
@@ -15,14 +20,10 @@ class HomePage extends Component {
               <CardContent className={this.props.classes.textAlignCenter}>
                 <BusinessFilter 
                     businessFilter={this.props.businessFilter}
-                    updateBusinessFilter={this.props.updateBusinessFilter}
+                    onFilter={this.onFilter}
+                    hasClearButton={false}
                 />
               </CardContent>
-              <div className={this.props.classes.actionGroup}>
-                  <CardActions>
-                    <Button variant="contained" color="primary" onClick={() => this.props.history.push("/businesses")}>Search</Button>
-                  </CardActions>
-              </div>
           </Card>
         )
     }
