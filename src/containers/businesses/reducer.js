@@ -25,15 +25,6 @@ const businesses = (state = init_state, action) => {
                 ...state,
                 businesses : filteredTileData
             }
-        case actions.RESET_BUSINESS_FILTER: 
-            return {
-                ...state,
-                businessFilter : {
-                    type: '',
-                    name: '',
-                    zipCode: ''
-                }
-            }
         default:
         return state;
     }
@@ -44,6 +35,7 @@ export default businesses;
 const tileData = [
     {
         img: Garage,
+        id: 0,
         name: 'West Street Service Center',
         description: 'Full service garage',
         city: 'gardner',
@@ -51,6 +43,7 @@ const tileData = [
     },
     {
         img: Restaurant,
+        id: 1,
         name: 'This is a test',
         description: 'Testing Description',
         city: 'Leominster',
@@ -58,6 +51,7 @@ const tileData = [
     },
     {
         img: Salon,
+        id: 2,
         name: 'Lord Of The Rings',
         description: 'Best Novels Ever',
         city: 'Middle Earth',

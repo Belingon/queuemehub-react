@@ -12,7 +12,3 @@ export const fetchBusinesses = () => dispatch => {
 const fetchBusinessesSuccess = () => ({
     type: actions.FETCH_BUSINESSES_SUCCESS,
 })
-
-export const resetBusinessFilter = () => ({
-    type: actions.RESET_BUSINESS_FILTER
-})

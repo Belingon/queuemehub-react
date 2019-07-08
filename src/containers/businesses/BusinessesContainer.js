@@ -4,8 +4,7 @@ import compose from 'recompose/compose';
 import PageBusinesses from '../../components/businesses/PageBusinesses';
 import { 
   updateBusinessFilter, 
-  fetchBusinesses,
-  resetBusinessFilter
+  fetchBusinesses
 } from './actions';
 import { neutralWhite } from '../../components/theme/colors';
 
@@ -31,6 +30,5 @@ function mapDispatchToProps(state) {
 
 export default compose(withStyles(styles), connect(mapDispatchToProps, {
   updateBusinessFilter,
-  fetchBusinesses,
-  resetBusinessFilter
+  fetchBusinesses
 }))(PageBusinesses);

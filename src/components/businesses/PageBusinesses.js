@@ -47,26 +47,31 @@ class PageBusinesses extends Component {
         this.setState({isFilterDrawerOpen: false})
     };
 
+    onTileClick = (tile) => {
+        console.log("Should be opening business up")
+        console.log(tile)
+    };
+
     render() {
         return [(
-            <Grid container style={{display: 'flex', flexGrow: 1}} >
-                <Grid item xs={12}>
+            <Grid container style={{display: 'flex', flexGrow: 1}} key= 'businessGrid'>
+                <Grid item xs={12} >
                         <Toolbar className={this.props.classes.toolbar}>
                             <p className={this.props.classes.title}>Businesses</p>
                             <div onClick={this.onFilterDrawerClick}>
-                            <FilterList  nativeColor={green}/>
+                            <FilterList style={{color:green}}/>
                             </div>
                         </Toolbar>
-                    <GridList cols={4} cellHeight={250} className={this.props.classes.gridList}>
+                    <GridList cols={4} cellHeight={250} spacing={6} className={this.props.classes.gridList}>
                         {this.props.businesses.map(tile => (
-                            <GridListTile key={tile.name}>
+                            <GridListTile key={tile.id} style={{marginTop: 10, marginBottom: 10}} onClick={() => this.onTileClick(tile)}>
                                 <img src={tile.img} alt={tile.name}/>
                                 <GridListTileBar
                                     title={tile.name}
                                     subtitle={<span>{tile.description}</span>}
                                     actionIcon={
                                         <IconButton>
-                                            <InfoIcon onClick={() => console.log("need to open slider up")}/>
+                                            <InfoIcon/>
                                         </IconButton>
                                     }
                                 />
@@ -76,6 +81,7 @@ class PageBusinesses extends Component {
                 </Grid>
         </Grid>),
         (<Drawer
+            key= 'businessFilterDrawer'
             anchor = 'right'
             open = {this.state.isFilterDrawerOpen}
             onClose = {this.onFilterDrawerClose}

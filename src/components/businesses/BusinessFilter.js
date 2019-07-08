@@ -103,12 +103,9 @@ class BusinessFilter extends Component {
 BusinessFilter.propTypes = {
     businessFilter: PropTypes.object.isRequired,
     onFilter: PropTypes.func.isRequired,
-    filterDirection: PropTypes.string.isRequired,
-    resetBusinessFilter: PropTypes.func.isRequired,
     hasClearButton: PropTypes.bool,
 }
 BusinessFilter.defaultProps = {
-    filterDirection: 'row',
     hasClearButton: true
   }
 export default withStyles(styles)(BusinessFilter);
