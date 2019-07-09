@@ -25,6 +25,11 @@ const businesses = (state = init_state, action) => {
                 ...state,
                 businesses : filteredTileData
             }
+        case actions.UPDATE_BUSINESS:
+            return {
+                ...state,
+                business : action.business
+            }
         default:
         return state;
     }
@@ -39,7 +44,8 @@ const tileData = [
         name: 'West Street Service Center',
         description: 'Full service garage',
         city: 'gardner',
-        type: 'garage'
+        type: 'garage',
+        inspectionWaitTime: 0
     },
     {
         img: Restaurant,
@@ -47,7 +53,8 @@ const tileData = [
         name: 'This is a test',
         description: 'Testing Description',
         city: 'Leominster',
-        type: 'restaurant'
+        type: 'restaurant',
+        inspectionWaitTime: 0
     },
     {
         img: Salon,
@@ -55,6 +62,7 @@ const tileData = [
         name: 'Lord Of The Rings',
         description: 'Best Novels Ever',
         city: 'Middle Earth',
-        type: 'barber'
+        type: 'barber',
+        inspectionWaitTime: 0
     }
 ]

@@ -12,3 +12,8 @@ export const fetchBusinesses = () => dispatch => {
 const fetchBusinessesSuccess = () => ({
     type: actions.FETCH_BUSINESSES_SUCCESS,
 })
+
+export const updateBusiness = business => ({
+    type: actions.UPDATE_BUSINESS,
+    business
+})
